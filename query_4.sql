@@ -1,2 +1,1 @@
-SELECT AVG(grade) as avg_grade
-FROM student_grades;
+SELECT AVG(grade) AS average_grade FROM grades;

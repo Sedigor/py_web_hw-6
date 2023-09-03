@@ -1,5 +1,8 @@
-SELECT group_name, AVG(grade) as avg_grade
-FROM student_grades
-JOIN students ON student_grades.student_id = students.student_id
-WHERE subject_id = X
-GROUP BY group_name;
+SELECT
+    st.group_id,
+    g.subject_id,
+    AVG(g.grade) AS average_grade
+FROM students st
+JOIN grades g ON st.student_id = g.student_id
+WHERE g.subject_id = <subject_id>
+GROUP BY st.group_id, g.subject_id;

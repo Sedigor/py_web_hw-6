@@ -11,9 +11,10 @@ NUMBER_TEACHERS = 5
 NUMBER_GROUPS = 3
 NUMBER_SUBJECTS = 8
 NUMBER_GRADES = 15
+subjects = ['Mathematics', 'Literature', 'History', 'Geography', 'Physics', 'Chemistry', 'Biology', 'English']
 
 
-def insert_data_to_db(NUMBER_STUDENTS, NUMBER_TEACHERS, NUMBER_GROUPS) -> None:
+def insert_data_to_db(NUMBER_STUDENTS, NUMBER_TEACHERS, NUMBER_GROUPS, subjects) -> None:
     
     with sqlite3.connect('university.db') as conn:
         cursor = conn.cursor()
@@ -27,7 +28,7 @@ def insert_data_to_db(NUMBER_STUDENTS, NUMBER_TEACHERS, NUMBER_GROUPS) -> None:
         students = [(None, fake.name(), random.randint(1, 3)) for _ in range(NUMBER_STUDENTS)]
         cursor.executemany('INSERT INTO students VALUES (?, ?, ?)', students)
 
-        subjects = ['Mathematics', 'Literature', 'History', 'Geography', 'Physics', 'Chemistry', 'Biology', 'English']
+        subjects = [(None, subject, random.randint(1, 5)) for subject in subjects]
         cursor.executemany('INSERT INTO subjects VALUES (?, ?, ?)', subjects)
 
         grades = [(None, random.randint(1, 50), random.randint(1, 8), random.randint(60, 100), fake.date_this_year()) for _ in range(300)]
@@ -35,4 +36,4 @@ def insert_data_to_db(NUMBER_STUDENTS, NUMBER_TEACHERS, NUMBER_GROUPS) -> None:
 
 
 if __name__ == "__main__":
-    insert_data_to_db(NUMBER_STUDENTS, NUMBER_TEACHERS, NUMBER_GROUPS)
+    insert_data_to_db(NUMBER_STUDENTS, NUMBER_TEACHERS, NUMBER_GROUPS, subjects)

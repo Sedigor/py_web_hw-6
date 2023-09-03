@@ -1,3 +1,6 @@
-SELECT course_name
-FROM courses
-WHERE teacher_id = Y;
+SELECT
+    t.first_name,
+    t.last_name,
+    s.subject_name
+FROM teachers t
+JOIN subjects s ON t.teacher_id = s.teacher_id;
