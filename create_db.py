@@ -6,12 +6,9 @@ def create_db():
     with open('university.sql', 'r') as f:
         sql = f.read()
 
-    # створюємо з'єднання з БД (якщо файлу з БД немає, він буде створений)
-    with sqlite3.connect('university.db') as con:
-        cur = con.cursor()
-        # виконуємо скрипт із файлу, який створить таблиці в БД
-        cur.executescript(sql)
+    with sqlite3.connect('university.db') as conn:
+        cursor = conn.cursor()
+        cursor.executescript(sql)
         
-
 if __name__ == "__main__":
     create_db()

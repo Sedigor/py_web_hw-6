@@ -1,1 +1,2 @@
-SELECT AVG(grade) AS average_grade FROM grades;
+SELECT (ROUND(AVG(grade))) AS avg_grade 
+FROM grades;

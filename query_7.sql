@@ -1,7 +1,4 @@
-SELECT
-    s.first_name,
-    s.last_name,
-    g.grade
-FROM students s
-JOIN grades g ON s.student_id = g.student_id
-WHERE s.group_id = <group_id> AND g.subject_id = <subject_id>;
+SELECT student_name, grade
+FROM students
+JOIN grades ON students.id = grades.student_id
+WHERE students.group_id = 2 AND grades.subject_id = 3;

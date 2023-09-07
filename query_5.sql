@@ -1,6 +1,5 @@
 SELECT
-    t.first_name,
-    t.last_name,
+    t.teacher_name,
     s.subject_name
 FROM teachers t
-JOIN subjects s ON t.teacher_id = s.teacher_id;
+JOIN subjects s ON t.id = s.id;

@@ -1,36 +1,39 @@
--- Table: students
-CREATE TABLE students (
-    student_id SERIAL PRIMARY KEY,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
-    group_id INT
-);
-
--- Table: teachers
-CREATE TABLE teachers (
-    teacher_id SERIAL PRIMARY KEY,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50)
-);
-
 -- Table: groups
+DROP TABLE IF EXISTS groups;
 CREATE TABLE groups (
-    group_id SERIAL PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     group_name VARCHAR(50)
 );
 
+-- Table: teachers
+DROP TABLE IF EXISTS teachers;
+CREATE TABLE teachers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    teacher_name VARCHAR(50)
+);
+
 -- Table: subjects
+DROP TABLE IF EXISTS subjects;
 CREATE TABLE subjects (
-    subject_id SERIAL PRIMARY KEY,
-    subject_name VARCHAR(100),
-    teacher_id INT
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    subject_name VARCHAR(50),
+    teacher_id INTEGER
+);
+
+-- Table: students
+DROP TABLE IF EXISTS students;
+CREATE TABLE students (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_name VARCHAR(50),
+    group_id INTEGER
 );
 
 -- Table: grades
+DROP TABLE IF EXISTS grades;
 CREATE TABLE grades (
-    grade_id SERIAL PRIMARY KEY,
-    student_id INT,
-    subject_id INT,
-    grade INT,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id INTEGER,
+    subject_id INTEGER,
+    grade INTEGER,
     date_received DATE
 );
